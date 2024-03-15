@@ -1,4 +1,4 @@
-from reglas import *
+from .reglas import *
 
 class sistemadereglas(KnowledgeEngine):
     def __init__(self):

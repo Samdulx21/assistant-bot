@@ -23,7 +23,7 @@ app = FastAPI()
 # ADD ROUTES
 
 app.include_router(bot_route.router)
-app.include_router(test_route.router)
+# app.include_router(test_route.router)
 
 
 if __name__ == "__main__":

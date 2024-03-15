@@ -1,6 +1,6 @@
 from random import choice
-from  sistemareglas import sistemadereglas
-from reglas import reglas
+from .sistemareglas import sistemadereglas
+from .reglas import reglas
 from nltk.chat.util import Chat, reflections
 import nltk
 import os
@@ -46,13 +46,13 @@ class Jarvi:
             ]
         ),
         (
-        (
             r'gracias|muchas gracias|te lo agradezco[\.\-,{´+}{´´}]*',
             [
                 'de nada, deseas algo mas?\n En caso que no, por favor escribe "salir".', 
                 'Jarvi siempre está aquí para servirte, deseas algo mas?\n En caso que no, por favor escribe "salir"'
             ]
         ),
+        (
             r'(.*)',
             [
                 'Lo siento, no entiendo tu pregunta.', 
@@ -60,7 +60,6 @@ class Jarvi:
             ]
         )
     ]
-
 
     chatbot = Chat(pairs, reflections)
 
