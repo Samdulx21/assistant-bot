@@ -95,6 +95,3 @@ class Jarvi:
             respuestas = jarvi.handle_symptoms(symptoms)
             for respuesta in respuestas:
                 print("Jarvi:", respuesta + "\nPor favor comuníquese con su doctor de confianza \n o llame al 605 344444") 
-
-    if __name__ == "__main__":
-        JarviBot()
