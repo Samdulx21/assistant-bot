@@ -26,10 +26,6 @@ MySQL Connector:
 pip install mysql-connector-python
 ```
 
-```shell
-pip install pyexpert
-```
-
 ### Instarlar libreria experta con los siguientes pasos:
 
 paso numero 1:

@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class Message(BaseModel):
     message: str
 
-bot = Jarvi()
+jarvi = Jarvi()
 
 router = APIRouter()
 
@@ -16,6 +16,6 @@ async def root():
 @router.post("/jarvi")
 async def get_response(message: Message):
     user_input = message.message
-    response = bot.chatbot.respond(user_input)
+    response = jarvi.respond(user_input)
     return { "response": response }
 
