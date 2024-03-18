@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import bot_route, test_route
+from routes import bot_route, test_route, login
 
 app = FastAPI()
 
@@ -23,6 +23,7 @@ app = FastAPI()
 # ADD ROUTES
 
 app.include_router(bot_route.router)
+app.include_router(login.router)
 # app.include_router(test_route.router)
 
 
