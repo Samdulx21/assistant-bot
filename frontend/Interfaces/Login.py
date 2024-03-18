@@ -81,12 +81,22 @@ class Ui_Form(object):
         self.pushButton = QtWidgets.QPushButton(self.frame)
         self.pushButton.setGeometry(QtCore.QRect(200, 350, 140, 27))
         self.pushButton.setObjectName("pushButton")
+        self.label_4 = QtWidgets.QLabel(self.frame)
+        self.label_4.setGeometry(QtCore.QRect(200, 210, 131, 16))
+        self.label_4.setStyleSheet("background-color: qlineargradient(spread:reflect, x1:0.991, y1:1, x2:1, y2:0, stop:0.439024 rgba(0, 0, 0, 0%), stop:1 rgba(0, 0, 0, 0%));\n"
+"background-color: rgb(0, 0, 0, 0%);\n"
+"background-color: rgb(0, 0, 0, 0%);\n"
+"background-color: qlineargradient(spread:reflect, x1:0.991, y1:1, x2:1, y2:0, stop:0.439024 rgba(0, 0, 0, 0%), stop:1 rgba(0, 0, 0, 0%));\n"
+"color:#FF0000;")
+        self.label_4.setText("")
+        self.label_4.setObjectName("label_4")
         self.label_2.raise_()
         self.label_3.raise_()
         self.lineEdit.raise_()
         self.lineEdit_2.raise_()
         self.label.raise_()
         self.pushButton.raise_()
+        self.label_4.raise_()
         self.horizontalLayout.addWidget(self.frame)
 
         self.retranslateUi(Form)
