@@ -1,10 +1,10 @@
 import sys
 import re
-import mysql.connector
+import requests
 from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 from Interfaces.Login import Ui_Form
-from dashboard import dashboard
+from dashboardCode import dashboard
 
 class Login(QDialog):
     def __init__(self):
@@ -34,9 +34,16 @@ class Login(QDialog):
             return
         
         # Verificar las credenciales en la base de datos MySQL
-        if not self.check_credentials(email, password):
+        response = self.check_credentials(email, password)
+        if "error" in response:
+            QMessageBox.warning(self, "Error", "Error al verificar las credenciales.")
+            return
+        elif not response.get("result"):
             QMessageBox.warning(self, "Error", "Usuario no registrado.")
             return
+        elif "result" in response:
+            user_data = response["result"]
+            print("Respuesta del servidor:", user_data)  # Imprimir la respuesta del servidor por consola
 
         # Si el correo es válido, limpiar el mensaje de error
         self.ui.label_4.clear()
@@ -45,57 +52,39 @@ class Login(QDialog):
         self.dashboard_window.show()
         self.hide()  # Ocultar la ventana de inicio de sesión
 
-        # Imprimir los valores en la consola
+         # Si hay datos de usuario en la respuesta, mostrarlos en el label
+        if user_data:
+            user_info = user_data[0]  # Tomar el primer usuario de la lista si hay varios
+            name = user_info.get("name", "")
+            last_name = user_info.get("last_name", "")
+            name_label_text = f"{name} {last_name}"
+            self.ui.label_3.setText("samuel dulce")  # Configurar el texto del label
+            print("Texto del label_3:", name_label_text)  # Imprimir el texto del label por consola
+
+             # Imprimir los valores en la consola
         print("Correo:", email)
         print("Contraseña:", password)
         
     def check_credentials(self, email, password):
-        # Conexión a la base de datos MySQL
+        # Envio de datos a la ruta login
         try:
-            mybd = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="root",
-            password="",
-            database="medical_center"
-        )
-            cursor = mybd.cursor()
+            url = "http://localhost:8000/login"  # URL de la ruta de login en tu backend
+            data = {"email": email, "user_password": password}
+            response = requests.post(url, json=data)
+            print(response)
+            return response.json()
+        except Exception as e:
+            print("Error al hacer la solicitud al backend:", e)
+            return {"error": "Error al hacer la solicitud al backend"}
+        
+class EndPointLogic(QObject):
+    user_info_updated = pyqtSignal(str, str)
 
-            # Consulta para verificar las credenciales
-            cursor.execute("""
-                    SELECT u.id, u.name, u.last_name, r.description as role, u.email, u.personal_id as cc
-                    FROM 
-                        users u
-                    JOIN
-                        role_users ru ON u.id = ru.user_id
-                    JOIN
-                        roles r ON ru.role_id = r.id
-                    WHERE 
-                        u.email = %s AND u.user_password = %s""", (email, password))
-          
-            user = cursor.fetchall()
-            payload = []
-            content = {}
-            for item in user:
-                content = {
-                    "id": item[0],
-                    "name": item[1],
-                    "last_name": item[2],
-                    "role": item[3],
-                    "email": item[4],
-                    "cc": item[5],
-                }
-                payload.append(content)
-                content = {}
+    def __init__(self):
+        super().__init__()
 
-            print(payload)
-
-            mybd.close()
-
-            return user is not None
-        except mysql.connector.Error as err:
-            print("Error de MySQL:", err)
-            return False
+    def update_user_info(self, name, last_name):
+        self.user_info_updated.emit(name, last_name)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

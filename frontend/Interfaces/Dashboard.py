@@ -11,20 +11,50 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_FormDashboard(object):
+class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(400, 300)
+        Form.resize(531, 349)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
         self.frame = QtWidgets.QFrame(Form)
-        self.frame.setGeometry(QtCore.QRect(-1, -1, 401, 301))
         self.frame.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.label = QtWidgets.QLabel(self.frame)
-        self.label.setGeometry(QtCore.QRect(140, 50, 101, 16))
-        self.label.setStyleSheet("font-size:20px;")
+        self.frame_2 = QtWidgets.QFrame(self.frame)
+        self.frame_2.setGeometry(QtCore.QRect(0, 0, 531, 51))
+        self.frame_2.setStyleSheet("-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);\n"
+"-moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);\n"
+"box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);\n"
+"background-color: rgb(3, 13, 149);\n"
+"width:100%;\n"
+"")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.label = QtWidgets.QLabel(self.frame_2)
+        self.label.setGeometry(QtCore.QRect(10, 20, 61, 16))
+        self.label.setStyleSheet("background-color: rgb(255, 255, 255,0%);\n"
+"color:white;\n"
+"font-size:15px;")
         self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        self.label_2.setGeometry(QtCore.QRect(310, 20, 71, 16))
+        self.label_2.setStyleSheet("color:white;\n"
+"font-size:14px;")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.frame_2)
+        self.label_3.setGeometry(QtCore.QRect(390, 20, 131, 16))
+        self.label_3.setStyleSheet("color:#afe3c4;\n"
+"font-size:14px;\n"
+"font-weight:600;\n"
+"")
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout.addWidget(self.frame)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -32,14 +62,15 @@ class Ui_FormDashboard(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "Dasboard"))
+        self.label.setText(_translate("Form", "Salud Cul"))
+        self.label_2.setText(_translate("Form", "Bienvenido:"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_FormDashboard()
+    ui = Ui_Form()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())
