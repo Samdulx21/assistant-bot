@@ -13,19 +13,27 @@ class LoginController():
             mydb = get_db_connection()
             db = mydb.cursor()
             db.execute(""" 
-                        SELECT 
-                            u.email as email, 
-                            u.user_password as u_pass
-                        FROM users as u
-                        WHERE u.email = %s AND u.user_password = %s
+                        SELECT u.id, u.name, u.last_name, r.description as role, u.email, u.personal_id as cc
+                        FROM 
+                            users u
+                        JOIN
+                            role_users ru ON u.id = ru.user_id
+                        JOIN
+                            roles r ON ru.role_id = r.id
+                        WHERE 
+                            u.email = %s AND u.user_password = %s
                         """, (email, user_password))
             response = db.fetchall()
             payload = []
             content = {}
             for item in response:
                 content = {
-                    "email": item[0],
-                    "u_pass": item[1],
+                    "id": item[0],
+                    "name": item[1],
+                    "last_name": item[2],
+                    "role": item[3],
+                    "email": item[4],
+                    "cc": item[5],
                 }
                 payload.append(content)
                 content = {}
