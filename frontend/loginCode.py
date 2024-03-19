@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QMessageBox
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal
 from Interfaces.Login import Ui_Form
 from dashboardCode import dashboard
+from dashboardMedicoCode import dashboardMedico
 
 class Login(QDialog):
     def __init__(self):
@@ -45,23 +46,38 @@ class Login(QDialog):
             user_data = response["result"]
             print("Respuesta del servidor:", user_data)  # Imprimir la respuesta del servidor por consola
 
-        # Si el correo es válido, limpiar el mensaje de error
-        self.ui.label_4.clear()
-        # Si el correo es válido, abrir la segunda ventana (dashboard)
-        self.dashboard_window = dashboard()  # Mantener referencia a la ventana del dashboard
-        self.dashboard_window.show()
-        self.hide()  # Ocultar la ventana de inicio de sesión
-
-         # Si hay datos de usuario en la respuesta, mostrarlos en el label
+        # Si hay datos de usuario en la respuesta, mostrarlos en el label
         if user_data:
             user_info = user_data[0]  # Tomar el primer usuario de la lista si hay varios
             name = user_info.get("name", "")
             last_name = user_info.get("last_name", "")
             name_label_text = f"{name} {last_name}"
-            self.ui.label_3.setText("samuel dulce")  # Configurar el texto del label
+           # self.ui.label_3.setText("samuel dulce")  # Configurar el texto del label
             print("Texto del label_3:", name_label_text)  # Imprimir el texto del label por consola
 
-             # Imprimir los valores en la consola
+            role = user_info.get("role", "")
+            print("Role del usuario:", role)  # Imprimir el valor de role por consola
+
+            if role == "Role Medico":
+                # Mostrar la ventana del dashboard del médico
+                self.dashboard_medico_window = dashboardMedico(name_label_text)
+                self.dashboard_medico_window.show()
+            else:
+                # Mostrar la ventana del dashboard del paciente
+                self.dashboard_window = dashboard(name_label_text)
+                self.dashboard_window.show()
+                
+            self.hide()    
+
+
+        # Si el correo es válido, limpiar el mensaje de error
+        self.ui.label_4.clear()
+        # Si el correo es válido, abrir la segunda ventana (dashboard)
+       # self.dashboard_window = dashboard(name_label_text)  # Mantener referencia a la ventana del dashboard
+       # self.dashboard_window.show()
+       # self.hide()  # Ocultar la ventana de inicio de sesión
+
+        # Imprimir los valores en la consola
         print("Correo:", email)
         print("Contraseña:", password)
         
@@ -77,14 +93,6 @@ class Login(QDialog):
             print("Error al hacer la solicitud al backend:", e)
             return {"error": "Error al hacer la solicitud al backend"}
         
-class EndPointLogic(QObject):
-    user_info_updated = pyqtSignal(str, str)
-
-    def __init__(self):
-        super().__init__()
-
-    def update_user_info(self, name, last_name):
-        self.user_info_updated.emit(name, last_name)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

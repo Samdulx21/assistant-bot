@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>531</width>
-    <height>349</height>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>0</number>
    </property>
@@ -32,7 +32,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true">background-color:white;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -53,8 +53,10 @@
        <string notr="true">-webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);
 -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);
 box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.47);
-background-color: rgb(3, 13, 149);
+background-color: rgb(63, 231, 213);
 width:100%;
+display:flex;
+align-items:center;
 </string>
       </property>
       <property name="frameShape">
@@ -68,14 +70,22 @@ width:100%;
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>61</width>
+         <width>71</width>
          <height>16</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255,0%);
-color:white;
-font-size:15px;</string>
+color:#0B0B0B;
+font-size:15px;
+font-weight:600;</string>
        </property>
        <property name="text">
         <string>Salud Cul</string>
@@ -86,13 +96,21 @@ font-size:15px;</string>
         <rect>
          <x>310</x>
          <y>20</y>
-         <width>71</width>
+         <width>77</width>
          <height>16</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">color:white;
-font-size:14px;</string>
+        <string notr="true">color:#3A3A3A;
+font-size:15px;
+font-weight:400;</string>
        </property>
        <property name="text">
         <string>Bienvenido:</string>
@@ -107,8 +125,15 @@ font-size:14px;</string>
          <height>16</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">color:#afe3c4;
+        <string notr="true">color:#0B0B0B;
 font-size:14px;
 font-weight:600;
 </string>
@@ -117,6 +142,33 @@ font-weight:600;
         <string/>
        </property>
       </widget>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>491</width>
+        <height>141</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:14px;
+font-weight:500</string>
+      </property>
+      <property name="text">
+       <string>Users:</string>
+      </property>
      </widget>
     </widget>
    </item>
