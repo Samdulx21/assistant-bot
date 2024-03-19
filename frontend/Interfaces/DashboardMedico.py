@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Dashboard.ui'
+# Form implementation generated from reading ui file 'DashboardMedico.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -14,16 +14,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(524, 364)
-        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName("verticalLayout")
+        Form.resize(531, 315)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(Form)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame = QtWidgets.QFrame(Form)
-        font = QtGui.QFont()
-        font.setFamily("Arial")
-        self.frame.setFont(font)
-        self.frame.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame.setStyleSheet("background-color:white;")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -43,7 +40,6 @@ class Ui_Form(object):
         self.label = QtWidgets.QLabel(self.frame_2)
         self.label.setGeometry(QtCore.QRect(10, 20, 71, 16))
         font = QtGui.QFont()
-        font.setFamily("Arial")
         font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
@@ -67,7 +63,6 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(self.frame_2)
         self.label_3.setGeometry(QtCore.QRect(390, 20, 131, 16))
         font = QtGui.QFont()
-        font.setFamily("Arial")
         font.setPointSize(-1)
         font.setBold(True)
         font.setWeight(75)
@@ -78,18 +73,17 @@ class Ui_Form(object):
 "")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
-        self.lineEdit = QtWidgets.QLineEdit(self.frame)
-        self.lineEdit.setGeometry(QtCore.QRect(70, 300, 371, 30))
-        self.lineEdit.setStyleSheet("border:1px solid gray;\n"
-"border-radius:3px;\n"
-"padding-left:3px;")
-        self.lineEdit.setObjectName("lineEdit")
+        self.tableWidget = QtWidgets.QTableWidget(self.frame)
+        self.tableWidget.setGeometry(QtCore.QRect(20, 90, 491, 141))
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
         self.label_4 = QtWidgets.QLabel(self.frame)
-        self.label_4.setGeometry(QtCore.QRect(36, 79, 451, 201))
-        self.label_4.setStyleSheet("border:1px solid gray;\n"
-"border-radius:5px;")
+        self.label_4.setGeometry(QtCore.QRect(20, 70, 47, 13))
+        self.label_4.setStyleSheet("font-size:14px;\n"
+"font-weight:500")
         self.label_4.setObjectName("label_4")
-        self.verticalLayout.addWidget(self.frame)
+        self.horizontalLayout.addWidget(self.frame)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -99,8 +93,7 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label.setText(_translate("Form", "Salud Cul"))
         self.label_2.setText(_translate("Form", "Bienvenido:"))
-        self.lineEdit.setPlaceholderText(_translate("Form", "Jarvi..."))
-        self.label_4.setText(_translate("Form", "Hola"))
+        self.label_4.setText(_translate("Form", "Users:"))
 
 
 if __name__ == "__main__":
