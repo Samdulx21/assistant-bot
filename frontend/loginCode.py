@@ -60,7 +60,7 @@ class Login(QDialog):
 
             if role == "Role Medico":
                 # Mostrar la ventana del dashboard del médico
-                self.dashboard_medico_window = dashboardMedico(name_label_text)
+                self.dashboard_medico_window = dashboardMedico()
                 self.dashboard_medico_window.show()
             else:
                 # Mostrar la ventana del dashboard del paciente

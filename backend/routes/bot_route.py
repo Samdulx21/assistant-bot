@@ -83,7 +83,7 @@ async def get_response(request: Request, message: Message):
 
     return { "response": respuestas }
 
-        return { "response": jarvi.respond(user_input) }
+    return { "response": jarvi.respond(user_input) }
  
     # Manejar los síntomas usando el sistema de reglas
     questions = [

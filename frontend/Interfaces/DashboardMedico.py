@@ -74,15 +74,26 @@ class Ui_Form(object):
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.tableWidget = QtWidgets.QTableWidget(self.frame)
-        self.tableWidget.setGeometry(QtCore.QRect(20, 90, 491, 141))
+        self.tableWidget.setGeometry(QtCore.QRect(20, 100, 491, 141))
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
         self.label_4 = QtWidgets.QLabel(self.frame)
-        self.label_4.setGeometry(QtCore.QRect(20, 70, 47, 13))
+        self.label_4.setGeometry(QtCore.QRect(20, 80, 47, 13))
         self.label_4.setStyleSheet("font-size:14px;\n"
 "font-weight:500")
         self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(self.frame)
+        self.label_5.setGeometry(QtCore.QRect(290, 70, 41, 16))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(-1)
+        self.label_5.setFont(font)
+        self.label_5.setStyleSheet("font-size:14px;")
+        self.label_5.setObjectName("label_5")
+        self.lineEdit = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit.setGeometry(QtCore.QRect(330, 70, 140, 20))
+        self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout.addWidget(self.frame)
 
         self.retranslateUi(Form)
@@ -94,6 +105,7 @@ class Ui_Form(object):
         self.label.setText(_translate("Form", "Salud Cul"))
         self.label_2.setText(_translate("Form", "Bienvenido:"))
         self.label_4.setText(_translate("Form", "Users:"))
+        self.label_5.setText(_translate("Form", "Filtro:"))
 
 
 if __name__ == "__main__":
