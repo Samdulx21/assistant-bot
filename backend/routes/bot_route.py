@@ -36,14 +36,14 @@ async def get_response(message: Message):
         return { "response": jarvi.respond(user_input) }
  
     # Manejar los síntomas usando el sistema de reglas
-    questions = [
+    symptoms = [
         "¿Tiene tos persistente? (si/no)",
         "¿Experimenta dificultad para respirar? (si/no)",
         "¿Ha tenido fiebre recientemente? (si/no)",
         "¿Ha experimentado dolor en el pecho? (si/no)",
         "¿Ha tenido congestión nasal o secreción nasal? (si/no)"
     ]
-    return { "question": questions[0] }
+    return { "question": symptoms[0] }
 
 if __name__ == "__main__":
     import uvicorn
